@@ -1,0 +1,27 @@
+services:
+  backend:
+    build: ./backend
+    container_name: mediassist-backend
+    env_file:
+      - ./backend/.env
+    volumes:
+      - backend_uploads:/app/uploads
+      - backend_chroma:/app/rag/chroma_store
+      - backend_db:/app/database
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    container_name: mediassist-frontend
+    depends_on:
+      - backend
+    ports:
+      - "80:80"
+    restart: unless-stopped
+
+volumes:
+  backend_uploads:
+  backend_chroma:
+  backend_db:
