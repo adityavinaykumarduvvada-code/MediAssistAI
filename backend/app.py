@@ -1,12 +1,4 @@
-"""
-MediAssist AI — FastAPI backend entrypoint.
 
-Endpoints:
-  POST /api/sessions/upload        -> upload files, get session_id + planner preview
-  POST /api/sessions/{id}/analyze  -> run the full agent pipeline
-  GET  /api/sessions/{id}/report   -> fetch a previously generated report
-  GET  /api/health                 -> liveness check
-"""
 import traceback
 import uuid
 from pathlib import Path
